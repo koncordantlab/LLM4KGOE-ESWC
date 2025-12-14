@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>llms4kgoe 2026 - Workshop on LLM-driven Knowledge Graph and Ontology Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern AI/Tech Color Palette */
+        :root {
+            --primary: #4f46e5; /* Indigo 600 */
+            --secondary: #06b6d4; /* Cyan 500 */
+            --accent: #8b5cf6; /* Violet 500 */
+            --bg-color: #f0f4f8;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Container with Glassmorphism feel */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 50px;
+            background-color: var(--glass);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { 
+            font-size: 3em; 
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        h2 { 
+            font-size: 2.2em; 
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+
+        h3 { font-size: 1.5em; color: var(--text-main); margin-top: 30px;}
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Navigation Styles */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            padding: 15px 0;
+            text-align: center;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover { color: #fff; text-decoration: none; }
+        nav a:hover::after { width: 100%; }
+
+        /* List Styles */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; color: var(--text-main); }
+
+        /* Section Styling */
+        .highlight {
+            margin-bottom: 40px;
+        }
+        
+        .header-text {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header-text p {
+            font-size: 1.3em;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .topic-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .topic-card strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { width: 95%; padding: 25px; }
+            nav a { display: block; margin: 10px 0; }
+            h1 { font-size: 2.2em; }
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at top right, #e0e7ff, transparent 40%),
+                        radial-gradient(circle at bottom left, #cffafe, transparent 40%);
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate;
+        }
+        .orb-1 { width: 300px; height: 300px; background: var(--primary); top: -50px; left: -50px; }
+        .orb-2 { width: 400px; height: 400px; background: var(--secondary); bottom: -100px; right: -100px; animation-delay: -5s;}
+        
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 50px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#submission">Submission</a>
+        <a href="#dates">Dates</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#organization">Organization</a>
+    </nav>
+
+    <div class="container" id="home">
+        
+        <div class="header-text">
+            <h1>Workshop on LLM-driven Knowledge Graph and Ontology Engineering (llms4kgoe) 2026</h1>
+            <p><strong>First Workshop</strong> | Co-located with ESWC 2026 (23rd European Semantic Web Conference)</p>
+        </div>
+
+        <section id="about" class="highlight">
+            <h2>About</h2>
+            <p>
+                The maturing of Semantic Web technologies cannot be separated from the need for high-quality, reusable ontologies. However, traditional ontology engineering is a notoriously difficult, time-consuming, and expert-driven process. The advent of LLMs presents a paradigm shift, promising to accelerate and democratize this process, enabling "specialists from beyond computer science" to develop their own models.
+            </p>
+            <p>
+                While the potential is enormous, automated ontology creation from LLMs presents significant challenges that the Semantic Web and knowledge engineering communities have yet to systematically address. If the foundational ontologies generated by LLMs are of poor quality, incoherent, or formally incorrect, the downstream AI systems built upon them will inherit these critical flaws.
+            </p>
+            <p>
+                This workshop focuses on the emerging and rapidly evolving intersection of Large Language Models (LLMs), semantic technologies, and ontology engineering. It addresses the challenges and opportunities associated with leveraging LLMs for ontology creation, refinement, and validation. The workshop encompasses both theoretical and practical aspects of LLM-based ontology construction, including semi-automated/fully automated ontology generation pipelines, evaluation methodologies, and strategies for reducing hallucinations.
+            </p>
+            <p>
+                <strong>Motivation:</strong> This workshop is motivated by three key observations: (1) the growing practical deployment of LLMs in knowledge graph and ontology construction projects with minimal formal evaluation frameworks; (2) the lack of systematic comparison between LLM-based and traditional ontology engineering approaches; and (3) the absence of community consensus on appropriate evaluation methodologies and quality metrics specific to LLM-generated ontologies.
+            </p>
+        </section>
+
+        <section id="topics" class="highlight">
+            <h2>Topics of Interest</h2>
+            <p>We welcome contributions on topics concerning the development and assessment of high-quality ontologies, both manually engineered and automatically generated using large language models (LLMs). The main topics of interest include:</p>
+            
+            <div class="topics-grid">
+                <div class="topic-card"><strong>LLM-to-KG with schema constraints</strong> Enforcing structured templates and ontology schemas during triple generation.</div>
+                <div class="topic-card"><strong>Education & UX</strong> Developing LLM-driven tutors for CQ/axiom authoring and automated documentation.</div>
+                <div class="topic-card"><strong>Evidence-linked triple extraction</strong> Capturing direct evidence sentences and document sources for traceability.</div>
+                <div class="topic-card"><strong>Hallucination benchmarking</strong> Metrics and datasets for measuring hallucination severity in KG extraction.</div>
+                <div class="topic-card"><strong>Post-hoc KG repair</strong> Applying symbolic reasoners and neural consistency models to detect/correct errors.</div>
+                <div class="topic-card"><strong>Calibration and abstention</strong> Incorporating probabilistic calibration to allow abstention on uncertain links.</div>
+                <div class="topic-card"><strong>Robustness and red-teaming</strong> Stress-testing model robustness using adversarial inputs and perturbations.</div>
+                <div class="topic-card"><strong>Domain applications</strong> Deploying KG within domains (e.g., biomedical, climate) to quantify decision impact.</div>
+                <div class="topic-card"><strong>Lifecycle and Maintenance</strong> LLM-assisted ontology evolution, versioning, CI/CD integration, and refactoring.</div>
+                <div class="topic-card"><strong>Modular Evaluation & Benchmarks</strong> Component-level metrics, task cards, and error taxonomies.</div>
+                <div class="topic-card"><strong>Provenance & Governance</strong> Designing evidence-traceable axioms, audit trails, and governance mechanisms.</div>
+                <div class="topic-card"><strong>Neuro-symbolic Control</strong> Reasoner-in-the-loop decoding and learned validators for logical soundness.</div>
+                <div class="topic-card"><strong>Human-in-the-Loop Protocols</strong> Role hierarchies and economic evaluation for expert participation.</div>
+                <div class="topic-card"><strong>Domain Adaptation</strong> Adapters, RAG with domain-specific KGs, and drift management.</div>
+                <div class="topic-card"><strong>Multilingual & Multimodal OE</strong> Pipelines translating text, tables, and figures into consistent axioms.</div>
+                <div class="topic-card"><strong>Operational Efficiency</strong> Measuring cost, energy efficiency, and latency of proprietary vs. open-source models.</div>
+                <div class="topic-card"><strong>Standards & Community Alignment</strong> Integration with FAIR principles, OBO/ODP standards, OAEI, and LLMS4OL.</div>
+            </div>
+        </section>
+
+        <section id="format" class="highlight">
+            <h2>Workshop Format</h2>
+            <p>
+                <strong>Type:</strong> First Workshop<br>
+                <strong>Length:</strong> Full Day (6-7 hours including breaks)<br>
+                <strong>Mode:</strong> In-person (aligned with conference on-site infrastructure)
+            </p>
+            <p>
+                We plan the workshop to begin with an invited talk followed by presentations of contributed papers (with discussion), and eventually, by an interactive session of breakout groups working on and discussing ontology design issues and patterns. We will conclude with joint reporting and a community town hall.
+            </p>
+        </section>
+
+        <section id="submission" class="highlight">
+            <h2>Submission Instructions</h2>
+            <p>
+                The papers will be (single-blind) peer-reviewed. The workshop proceedings will be published by CEUR. We will also provide the option of not archiving the submissions on CEUR to the authors.
+            </p>
+            <p>
+                Manuscripts will be submitted through
+                <a href="https://easychair.org/conferences?conf=llms4kgoe2026" target="_blank" rel="noopener noreferrer">
+                    EasyChair
+                </a>.
+                For all manuscript submissions, at least one author must agree to review another paper
+            </p>
+        </section>
+
+        <section id="dates" class="highlight">
+            <h2>Important Dates</h2>
+            <ul>
+                <li>Workshop paper submissions: February 20, 2026</li>
+                <li>Workshop program with list of accepted papers available online: April 15, 2026</li>
+                <li>Workshop will be held on: TBD, 2026 (Aligned with ESWC 2026)</li>
+            </ul>
+        </section>
+
+        <section id="schedule" class="highlight">
+            <h2>Tentative Schedule</h2>
+            <p><em>The following is a placeholder schedule based on typical workshop structures. Specific papers and times will be announced closer to the event.</em></p>
+            
+            <!-- <h3>Session 1 <span style="font-weight:600;">[9:00–10:30 AM]</span></h3>
+            <ul>
+                <li><strong>Invited Talk</strong> — 9:00–9:45</li>
+                <li>9:45–9:50 — Q&amp;A</li>
+                <li><strong>Paper Presentation 1</strong> — 9:50–10:10</li>
+                <li><strong>Paper Presentation 2</strong> — 10:10–10:30</li>
+            </ul>
+            
+            <h3>Session 2 <span style="font-weight:600;">[11:00–12:30 PM]</span></h3>
+            <ul>
+                <li><strong>Paper Presentation 3</strong> — 11:00–11:20</li>
+                <li><strong>Paper Presentation 4</strong> — 11:20–11:40</li>
+                <li><strong>Paper Presentation 5</strong> — 11:40–12:00</li>
+                <li><strong>Interactive Breakout Group Formation</strong> — 12:00–12:30</li>
+            </ul>
+            
+            <h3>Session 3 <span style="font-weight:600;">[1:30–3:00 PM]</span></h3>
+            <ul>
+                <li><strong>Breakout Group Work</strong> — 1:30–2:30<br><em>Interactive sessions facilitated through the physical venue.</em></li>
+                <li><strong>Group Reporting & Town Hall</strong> — 2:30–3:00</li>
+            </ul> -->
+        </section>
+
+        <section id="organization" class="highlight">
+            <h2>Organization</h2>
+            
+            <h3>General Chairs</h3>
+            <ul>
+                <li><strong>Aryan Singh Dalal</strong> (General Co-chair), Kansas State University, USA</li>
+                <li><strong>Kathleen Jagodnik</strong> (General Co-chair), Kansas State University, USA</li>
+                <li><strong>Hande McGinty</strong> (General Co-chair), Kansas State University, USA</li>
+                <li><strong>Cogan Shimizu</strong> (General Co-chair), Wright State University, USA</li>
+                <li><strong>Maria Maleshkova</strong> (General Co-chair), Helmut Schmidt University, Germany</li>
+            </ul>
+
+            <h3>Program Committee</h3>
+            <ul>
+                <li>Shreyas Casturi, Wright State University</li>
+                <li>Antrea Christou, Wright State University</li>
+                <li>Nirmal Gelal, Kansas State University</li>
+                <li>Yinglun Zhang, Kansas State University</li>
+                <li>Soheil Abadifard, Kansas State University</li>
+                <li>Aryan Dalal, Kansas State University</li>
+                <li>Kathleen Jagodnik, Kansas State University</li>
+                <li>Elham Ghiasi, Wright State University</li>
+                <li>Chris Davis Jaldi, Wright State University</li>
+                <li>Michael McCain, Wright State University</li>
+                <li>Anmol Saini, Wright State University</li>
+                <li>Susan Shrestha, Wright State University</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
